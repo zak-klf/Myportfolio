@@ -1,0 +1,49 @@
+main {
+    //padding: 4rem;
+    // height: 100%;
+    //min-height: calc(100vh - 60px);
+
+    h1,
+    h2 {
+        color: rgba(255, 255, 255, 0.85);
+        text-transform: uppercase;
+    }
+
+    .name {
+        padding: 2rem;
+        color: white;
+        font-size: 2rem;
+        //margin-top: 3rem;
+        outline: 5px solid white;
+        margin: 30px;
+    }
+}
+
+
+//animation old content
+/*
+
+@keyframes textclip {
+    to {
+        background-position: 150% center;
+    }
+}
+
+&:hover {
+            color: white;
+            background-image: linear-gradient(
+                -225deg,
+                #ffffff 0%,
+                #0b0e1e 29%,
+                #ffffff 67%,
+                #0b0e1e 100%);
+            //background-image: #0b0e1e;
+            background-size: auto auto;
+            background-clip: border-box;
+            background-size: 150% auto;
+            color: #fff;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textclip 3s linear infinite;
+        }
+*/

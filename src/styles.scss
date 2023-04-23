@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+//@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+//background: rgb(17,14,62);
+//background: linear-gradient(90deg, rgba(17,14,62,1) 0%, rgba(30,30,103,1) 84%, rgba(39,15,120,1) 100%);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Open Sans';
+
+    h1, h2, h3, h4, h5, h6, p {
+        margin: 0;
+        padding: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
