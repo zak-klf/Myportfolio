@@ -16,6 +16,12 @@ main {
         //margin-top: 3rem;
         outline: 5px solid white;
         margin: 30px;
+
+        //TEMP
+        transition: 0.3s;
+        &:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
     }
 }
 

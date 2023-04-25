@@ -7,33 +7,51 @@
 .container {
     gap: 2rem;
     display: grid;
+    grid-template-areas:
+        'title'
+        'table paragraph';
+    grid-template-columns: 1fr 1fr;
+    margin-top: 3rem;
+
+    h1 {
+        grid-column: 1/3;
+        padding: 1rem 0;
+        text-align: center;
+        letter-spacing: 1px;
+        outline: 3px solid white;
+        text-transform: uppercase;
+    }
+
+    
+    table {
+        font-size: 1.3rem;
+        outline: 1px solid white;
+
+        tr {
+            height: 40px;
+
+            td {
+                padding-left: 0.5rem;
+                text-align: center;
+            }
+        }
+    }
+
+    section p {
+        font-size: 1.2rem;
+        text-align: justify;
+    }
+
+    section p:not(:first-child) {
+        margin-top: 1rem;
+    }
+
 }
 
-table {
-    font-size: 1.3rem;
-    outline: 1px solid white;
-}
 
-table tr {
-    height: 40px;
-}
 
-table tr td {
-    padding-left: 0.5rem;
-}
 
-table tr td:nth-child(even) {
-    color: var(--green);
-}
 
-section p {
-    font-size: 1.2rem;
-    text-align: justify;
-}
-
-section p:not(:first-child) {
-    margin-top: 1rem;
-}
 
 /* PC */
 
@@ -41,9 +59,7 @@ section p:not(:first-child) {
     margin-top: 3rem;
 }
 
-:host.pc .container {
-    grid-template-columns: 1fr 1fr;
-}
+:host.pc .container {}
 
 :host.pc h1 {
     grid-column: 1/3;

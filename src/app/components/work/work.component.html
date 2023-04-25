@@ -1,1 +1,48 @@
-<p>work works!</p>
+<div class="container">
+
+    <h1 class="title">
+        <span>Work</span>
+    </h1>
+
+    <div class="accordions">
+
+        <div class="accordion">
+            <div class="professional-work">
+                <h2 class="sub-title">Professional Work</h2>
+                <ul>
+                    <li *ngFor="let experience of  workExperiences">
+                        <i></i>
+                        <input type="checkbox" checked>
+                        <h3> {{experience.title}} </h3>
+                        <p>
+                            {{experience.description}}
+                        </p>
+                        <p>
+                            {{experience.skillsApplied}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion">
+            <div class="professional-work">
+                <h2 class="sub-title">Personnal Projects</h2>
+                <ul>
+                    <li *ngFor="let experience of  workExperiences">
+                        <i></i>
+                        <input type="checkbox" checked>
+                        <h3> {{experience.title}} </h3>
+                        <p>
+                            {{experience.description}}
+                        </p>
+                        <p>
+                            {{experience.skillsApplied}}
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
