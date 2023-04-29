@@ -4,11 +4,17 @@
         Skills
     </h1>
 
-
     <div class="page-content">
-        <div class="tags">
-    
-        </div>
+        <section class="tags">
+            <angular-tag-cloud 
+                [config]="options" 
+                [data]="data" 
+                (clicked)="scrollToTag($event)" 
+                [zoomOnHover]="zoomOnHoverOptions"
+                >
+
+            </angular-tag-cloud>
+        </section>
 
         <section class="education">
             <h2>Education</h2>
@@ -25,14 +31,18 @@
         <section class="skills-list">
             <h2>Skills</h2>
             <ul>
-                <li *ngFor="let skill of  skills">
-                    <span>{{skill.name}}, {{skill.level}}</span>
+                <li *ngFor="let skill of  skills" id="{{skill.name}}">
+                    <h3> {{skill.name}} </h3>
+                    <h4> {{skill.level}} </h4>
+                    <div class="rating">
+                        <div class="bar">
+                            <div [ngStyle]="{'width': skill.rating+'%'}"></div>
+                        </div>
+                        <div>{{skill.rating}}%</div>
+                    </div>
                 </li>
             </ul>
         </section>
     </div>
-
-
-
 
 </div>

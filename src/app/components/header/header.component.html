@@ -1,24 +1,27 @@
 <header class="navbar">
-        <div class="list-items">
-            <a routerLink="home" routerLinkActive="selected" class="list-item">
-                <!-- <i class="material-icons">home</i> -->
-                Home
-            </a>
 
-            <a routerLink="about" routerLinkActive="selected" class="list-item">
-                About
-            </a>
+    <div class="menu-btn" (onclick)="toggleNavbar()">
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+        <div class="btn-line"></div>
+    </div>
 
-            <a routerLink="skills" routerLinkActive="selected" class="list-item">
-                Skills
-            </a>
-
-            <a routerLink="work" routerLinkActive="selected" class="list-item">
-                Work
-            </a>
-
-            <a routerLink="contact" routerLinkActive="selected" class="list-item">
-                Contact
-            </a>
-        </div>
-</header>
+    <div class="list-items">
+      <a routerLink="home" routerLinkActive="selected" class="list-item">
+        Home
+      </a>
+      <a routerLink="about" routerLinkActive="selected" class="list-item">
+        About
+      </a>
+      <a routerLink="skills" routerLinkActive="selected" class="list-item">
+        Skills
+      </a>
+      <a routerLink="work" routerLinkActive="selected" class="list-item">
+        Work
+      </a>
+      <a routerLink="contact" routerLinkActive="selected" class="list-item">
+        Contact
+      </a>
+    </div>
+  </header>
+  
