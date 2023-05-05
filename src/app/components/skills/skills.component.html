@@ -1,10 +1,11 @@
 <div class="container">
 
     <h1 class="title">
-        Skills
+        {{page.title}}
     </h1>
 
     <div class="page-content">
+        
         <section class="tags">
             <angular-tag-cloud 
                 [config]="options" 
@@ -15,11 +16,11 @@
 
             </angular-tag-cloud>
         </section>
-
+        
         <section class="education">
-            <h2>Education</h2>
+            <h2> {{page.subTitle1}} </h2>
             <ul>
-                <li *ngFor="let education_item of education">
+                <li *ngFor="let education_item of page.education">
                     <h3><span>{{education_item.institute}}</span><br></h3>
                     <h4><span>{{education_item.title}}</span></h4>
                     <span>Courses: {{education_item.courses}}</span>
@@ -29,9 +30,9 @@
         </section>
 
         <section class="skills-list">
-            <h2>Skills</h2>
+            <h2> {{page.subTitle2}} </h2>
             <ul>
-                <li *ngFor="let skill of  skills" id="{{skill.name}}">
+                <li *ngFor="let skill of  page.skillList" id="{{skill.name}}">
                     <h3> {{skill.name}} </h3>
                     <h4> {{skill.level}} </h4>
                     <div class="rating">

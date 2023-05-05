@@ -1,16 +1,17 @@
 <div class="container">
 
     <h1 class="title">
-        <span>Work</span>
+        <span> {{page.title}} </span>
     </h1>
 
     <div class="accordions">
 
         <div class="accordion">
             <div class="professional-work">
-                <h2 class="sub-title">Professional Work</h2>
-                <ul>
-                    <li *ngFor="let experience of  workExperiences">
+                <h2 class="sub-title"> {{page.subTitle1}} </h2>
+
+                <ul *ngFor="let experience of page.experienceList">
+                    <li *ngIf="experience.workType==='professional'">
                         <i></i>
                         <input type="checkbox" checked>
                         <h3> {{experience.title}} </h3>
@@ -18,7 +19,7 @@
                             {{experience.description}}
                         </p>
                         <p>
-                            {{experience.skillsApplied}}
+                            Skills used: {{experience.skillsApplied}}
                         </p>
                     </li>
                 </ul>
@@ -27,17 +28,17 @@
 
         <div class="accordion">
             <div class="professional-work">
-                <h2 class="sub-title">Personnal Projects</h2>
-                <ul>
-                    <li *ngFor="let experience of  workExperiences">
+                <h2 class="sub-title"> {{page.subTitle2}} </h2>
+                <ul *ngFor="let experience of page.experienceList">
+                    <li *ngIf="experience.workType==='personal'">
                         <i></i>
                         <input type="checkbox" checked>
                         <h3> {{experience.title}} </h3>
-                        <p>
-                            {{experience.description}}
+                        <p *ngFor="let paragraph of experience.description">
+                            {{paragraph}}
                         </p>
                         <p>
-                            {{experience.skillsApplied}}
+                            Skills used: {{experience.skillsApplied}}
                         </p>
                     </li>
                 </ul>

@@ -1,1 +1,49 @@
-<p>contact works!</p>
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+    integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<div class="container">
+
+    <h1 class="title">
+        <span> {{page.title}} </span>
+    </h1>
+
+    <div class="content">
+
+        <section class="email">
+            <span class="email-text">
+                contact.zakarya@outlook.com
+            </span>
+            <button>
+                <span class="material-symbols-outlined button" (click)="copyToClipboard()">
+                    content_copy
+                </span>
+            </button>
+        </section>
+
+        <section class="CV">
+            <span class="CV-text"> {{page.buttonCV}} </span>
+            <button>
+                <a href="https://drive.google.com/file/d/1Yn4OYSAdNCtdNYTTozYp5IqA7ky8uc8-/view?usp=share_link">
+                    <span class="material-symbols-outlined button">
+                        open_in_new
+                    </span>
+                </a>
+            </button>
+        </section>
+    </div>
+
+    <div class="icons">
+        <a href="https://linkedin.com/in/zakarya-khelif-60aa37152" class="icon-item">
+            <i class="fab fa-linkedin fa-6x"></i>
+        </a>
+        <a href="https://github.com/zak-klf" class="icon">
+            <i class="fab fa-github fa-6x"></i>
+        </a>
+    </div>
+
+
+
+</div>

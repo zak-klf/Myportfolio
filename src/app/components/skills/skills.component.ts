@@ -1,6 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
-import { Skill, Education } from 'src/assets/models/models';
-import { CloudData, CloudOptions, ZoomOnHoverOptions  } from 'angular-tag-cloud-module/public-api';
+import { Component, HostListener } from '@angular/core';
+import { CloudData, CloudOptions, TagCloudComponent, ZoomOnHoverOptions } from 'angular-tag-cloud-module/public-api';
+import { SkillContent, SkillList } from 'src/assets/models/models';
+
+import { SKILL_CONTENT_EN } from 'src/assets/db/en/components/skills';
+import { SKILL_CONTENT_FR } from 'src/assets/db/fr/components/skills';
+import { LanguageService } from 'src/app/services/language.service';
 
 
 declare function TagCloud(div: any, tags: any, options: any): any;
@@ -13,60 +17,18 @@ declare function TagCloud(div: any, tags: any, options: any): any;
 
 export class SkillsComponent {
 
-  education: Education[] = [
-    {
-      institute: 'Université Grenoble Alpes IUT2',
-      title: 'HND Computer Science',
-      courses: ['Object Oriented Programming', 'Web Development', 'Assembly and Machine Languages', 'SQL Databases', 'Android App Development',
-        'Algorithms', 'Statistics', 'Graphs and Languages', 'Networking and security'],
-      description: ['Validated my HND in two years ending with a three month internship as a full-stack developper']
-    },
-    {
-      institute: 'Université Paris 8',
-      title: 'Bachelor of Science - Computer Science',
-      courses: ['Object Oriented Programming', 'Assembly', 'Machine Languages', 'Big Data and Data Mining', 'Introduction to security', 'Interpretation and Compilation', 'Open Source Software Design', 'Psychology'],
-      description: ['Graduiting for a Bachelor\'s degree in computer science ending with a 2 to 6 months internship']
-    },
-    {
-      institute: 'Coursera',
-      title: 'Google Data Analytics Professional Certificate',
-      courses: ['Data Analysis', 'Advanced Spreadsheets', 'Databases', 'Tableau and Data Visualization', 'R Programming'],
-      description: ['Course done on my free time to learn about the fundementals of data analysis and visualization']
-    },
-    {
-      institute: '365 Careers',
-      title: 'Data Science Bootcamp',
-      courses: ['Probabilities and Statistics', 'Machine Learning', 'Deep Learning with TensorFlow'],
-      description: ['Course done on my free time to learn about advanced data science techniques']
-    }
-  ];
+  language: string = '';
 
-  skills: Skill[] = [
-    { name: 'JavaScript', level: 'Intermediate', rating: 85 },
-    { name: 'HTML/CSS', level: 'Intermediate', rating: 85 },
-    { name: 'Angular', level: 'Intermediate', rating: 85 },
-    { name: 'NodeJS', level: 'Intermediate', rating: 85 },
-    { name: 'Express', level: 'Intermediate', rating: 85 },
-    { name: 'Bash', level: 'Intermediate', rating: 85 },
-    { name: 'TypeScript', level: 'Intermediate', rating: 90 },
-    { name: 'Tableau', level: 'Intermediate', rating: 85 },
-    { name: 'Java', level: 'Intermediate', rating: 85 },
-    { name: 'Python', level: 'Intermediate', rating: 85 },
-    { name: 'R', level: 'Intermediate', rating: 85 },
-    { name: 'DeepLearning(Tensoflow)', level: 'Intermediate', rating: 85 },
-    { name: 'NumPy, Matplotlib, Pandas', level: 'Intermediate', rating: 85 },
-    { name: 'Logistic/Linear Regressions', level: 'Intermediate', rating: 85 },
-    { name: 'Sklearn, StatsModels', level: 'Intermediate', rating: 65 },
-    { name: 'PHP', level: 'Intermediate', rating: 85 },
-    { name: 'MySQL', level: 'Intermediate', rating: 85 },
-    { name: 'Design', level: 'Intermediate', rating: 85 }
-  ];
+  EN_content_skill: SkillContent = SKILL_CONTENT_EN;
+  FR_content_skill: SkillContent = SKILL_CONTENT_FR;
+
+  page:SkillContent = SKILL_CONTENT_EN;
 
   options: CloudOptions = {
     // if width is between 0 and 1 it will be set to the width of the upper element multiplied by the value
-    //width: 800,
+    width: 0.85,
     // if height is between 0 and 1 it will be set to the height of the upper element multiplied by the value
-    //height: 800,
+    height: 0.85,
     overflow: false,
   };
 
@@ -88,12 +50,40 @@ export class SkillsComponent {
     // Scroll the element into view
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Store the original background color
+      const originalBackgroundColor = element.style.backgroundColor;
+
+      // Blink animation
+      const blinkDuration = 500; // in milliseconds
+      element.style.backgroundColor = 'white';
+      element.style.color = 'rgba(11, 14, 30, 1)';
+      // add transition effect to the color and background-color properties
+      element.style.transition = "color 0.25s ease, background-color 0.45s ease";
+      setTimeout(() => {
+        element.style.backgroundColor = originalBackgroundColor;
+        element.style.color = ''; // restore the original color
+      }, blinkDuration);
     }
   }
 
-  constructor() {
-    this.data = this.skills.map((skill: Skill) => ({
-      text: skill.name,
+  constructor(private languageService: LanguageService) {
+    
+  }
+
+  ngOnInit() {
+    //LANGUAGE
+    this.languageService.language$.subscribe(language => {
+      this.language = language;
+      if (language === 'en') {
+        this.page = this.EN_content_skill;
+      } else {
+        this.page = this.FR_content_skill;
+      }
+    });
+
+    this.data = this.page.skillList.map((skill_list: SkillList) => ({
+      text: skill_list.name,
       weight: Math.floor(Math.random() * 6) + 5,
       color: 'white'
     }));

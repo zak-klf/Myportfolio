@@ -1,47 +1,61 @@
-import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
+import { HEADER_CONTENT_EN } from 'src/assets/db/en/components/header';
+import { HEADER_CONTENT_FR } from 'src/assets/db/fr/components/header';
+import { HeaderContent } from 'src/assets/models/models';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent {
 
-  constructor(private renderer: Renderer2) {
 
+  EN_content_header:HeaderContent = HEADER_CONTENT_EN;
+  FR_content_header:HeaderContent = HEADER_CONTENT_FR;
+
+  isEnglish = false;
+  language: string = '';
+
+  page:HeaderContent = HEADER_CONTENT_EN;
+
+  menuAvailable = false;
+  isToggled = false;
+
+  constructor(private languageService: LanguageService) {
+    this.menuAvailable = window.innerWidth < 768;
   }
-
-  showMenu = false;
-
-  @ViewChild('menuBtn') menuBtn!: ElementRef;
-  @ViewChild('menu') menu!: ElementRef;
-  @ViewChild('menuNav') menuNav!: ElementRef;
-  @ViewChild('menuBranding') menuBranding!: ElementRef;
-  @ViewChild('navItems') navItems!: ElementRef;
+  
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.menuAvailable = event.target.innerWidth < 768;
+  }
+  
 
   toggleNavbar() {
-    this.showMenu = !this.showMenu;
+    this.isToggled = !this.isToggled;
+  }
 
-    if (this.showMenu) {
-      this.renderer.addClass(this.menuBtn.nativeElement, 'close');
-      this.renderer.addClass(this.menu.nativeElement, 'show');
-      this.renderer.addClass(this.menuNav.nativeElement, 'show');
-      this.renderer.addClass(this.menuBranding.nativeElement, 'show');
+  closeNavbar() {
+    this.isToggled = false;
+  }
 
-      const navItems = this.navItems.nativeElement.children;
-      for (let i = 0; i < navItems.length; i++) {
-        this.renderer.addClass(navItems[i], 'show');
+  onChange() {
+    const language = this.isEnglish ? 'fr' : 'en';
+    this.languageService.setLanguage(language);
+  }
+
+  ngOnInit() {
+    this.languageService.language$.subscribe(language => {
+      this.language = language;
+      if (language === 'en') {
+        this.page = this.EN_content_header;
+      } else {
+        this.page = this.FR_content_header;
       }
-    } else {
-      this.renderer.removeClass(this.menuBtn.nativeElement, 'close');
-      this.renderer.removeClass(this.menu.nativeElement, 'show');
-      this.renderer.removeClass(this.menuNav.nativeElement, 'show');
-      this.renderer.removeClass(this.menuBranding.nativeElement, 'show');
-
-      const navItems = this.navItems.nativeElement.children;
-      for (let i = 0; i < navItems.length; i++) {
-        this.renderer.removeClass(navItems[i], 'show');
-      }
-    }
+    });
   }
 }
+

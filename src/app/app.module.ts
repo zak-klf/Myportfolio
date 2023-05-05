@@ -10,6 +10,7 @@ import { WorkComponent } from './components/work/work.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutComponent } from './components/about/about.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AboutComponent } from './components/about/about.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    TagCloudComponent
+    TagCloudComponent,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

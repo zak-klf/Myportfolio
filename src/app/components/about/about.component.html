@@ -1,22 +1,22 @@
 <div class="container">
 
     <h1 class="title">
-        <span>Personal Information</span>
+        <span> {{page.title}} </span>
     </h1>
 
     <table class="table">
         <tbody>
-            <tr *ngFor="let row of myData_EN">
+            <tr *ngFor="let row of page.content.myData ">
                 <td *ngFor="let col of row">{{col}}</td>
             </tr>
         </tbody>
     </table>
 
     <section class="paragraph">
-        <p *ngFor="let paragraph of aboutMe_EN">
+        <p *ngFor="let paragraph of  page.content.aboutMe ">
             {{paragraph}}
-        </p>
-        <a class="link" routerLink="contact">{{link_EN}}</a>
+        </p><br>
+        <a class="link" routerLink="/contact" >{{page.content.link}}</a>
     </section>
 
 </div>

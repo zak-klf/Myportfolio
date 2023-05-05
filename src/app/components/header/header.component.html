@@ -1,27 +1,31 @@
+<div class="menu-btn" (click)="toggleNavbar()" *ngIf="menuAvailable">
+  <div class="btn-line"></div>
+  <div class="btn-line"></div>
+  <div class="btn-line"></div>
+</div>
+
 <header class="navbar">
-
-    <div class="menu-btn" (onclick)="toggleNavbar()">
-        <div class="btn-line"></div>
-        <div class="btn-line"></div>
-        <div class="btn-line"></div>
-    </div>
-
+  <div class="menu" [ngClass]="{'show': isToggled}">
     <div class="list-items">
-      <a routerLink="home" routerLinkActive="selected" class="list-item">
-        Home
-      </a>
-      <a routerLink="about" routerLinkActive="selected" class="list-item">
-        About
-      </a>
-      <a routerLink="skills" routerLinkActive="selected" class="list-item">
-        Skills
-      </a>
-      <a routerLink="work" routerLinkActive="selected" class="list-item">
-        Work
-      </a>
-      <a routerLink="contact" routerLinkActive="selected" class="list-item">
-        Contact
-      </a>
+      
+      <a routerLink="home" routerLinkActive="selected" class="list-item" (click)="toggleNavbar()"> {{page.navbarItems[0]}} </a>
+      <a routerLink="about" routerLinkActive="selected" class="list-item" (click)="toggleNavbar()"> {{page.navbarItems[1]}}</a>
+      <a routerLink="skills" routerLinkActive="selected" class="list-item" (click)="toggleNavbar()"> {{page.navbarItems[2]}}</a>
+      <a routerLink="work" routerLinkActive="selected" class="list-item" (click)="toggleNavbar()"> {{page.navbarItems[3]}}</a>
+      <a routerLink="contact" routerLinkActive="selected" class="list-item" (click)="toggleNavbar()">{{page.navbarItems[4]}}</a>
+      
+
+      <div class="switch">
+        <input id="language-toggle" class="check-toggle check-toggle-round-flat" type="checkbox" [(ngModel)]="isEnglish" (change)="onChange()">
+        <label for="language-toggle"></label>
+        <span class="on">EN</span>
+        <span class="off">FR</span>
+      </div>
+
     </div>
-  </header>
-  
+
+    
+
+  </div>
+
+</header>
