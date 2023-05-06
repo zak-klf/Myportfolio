@@ -56,7 +56,7 @@ export const WORK_EXPERIENCE: Work[] = [
             'It is built with SCSS instead of regular CSS to make it more readable, and built to be fully responsive.',
             'No Databases are currently used to make the site as cost effective and possible and to be able to host it on github, JSON files are used instead as of now.',
             'The wesbite supports multilanguage functionnality (EN and FR as of today).',
-            'My github page contains the source code of the project, link below.'
+            'My github page contains the source code of the project.'
         ],
         skillsApplied: ['Angular', 'TypeScript', 'SCSS', 'Responsive Design', 'git', 'HTML',],
         workType: 'personal',

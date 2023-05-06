@@ -57,11 +57,11 @@ export const EXPERIENCES_PRO: Work[] = [
             'Le site utilise SCSS au lieu de CSS pour rendre les feuilles de style plus modulables, lisibles et bien sûr "responsive". ',
             'Aucune base de données est utilisée pour l\'instant pour pouvoir héberger le site sur github. ',
             'Le site multilingue (FR en EN pour l\'insant). ',
-            'Ma page github contient le code source du site, lien ci-dessous. '
+            'Ma page github contient le code source du site. '
         ],
         skillsApplied: ['Angular', 'TypeScript', 'SCSS', 'Responsive Design', 'git', 'HTML',],
         workType: 'personal',
-        link: null
+        link: "https://github.com/zak-klf/Myportfolio"
     },
     {
         title: 'Projets Personnels Divers',

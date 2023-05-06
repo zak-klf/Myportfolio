@@ -1,18 +1,18 @@
 import { Education } from "../../../models/models";
 
-export const FORMATIONS:Education[] = [
+export const FORMATIONS: Education[] = [
+    {
+        institute: 'Université Paris 8',
+        title: 'Licence Informatique',
+        courses: [' Programmation Orientée Objet', ' Assembleur', ' Langages Machines', ' Big Data et Data Mining', ' Introduction à la sécurité', ' Interprétation et Compilation', ' Développement de logiciels OpenSource', ' Psychologie'],
+        description: ['Validation de la licence avec un stage de 2 à 6 mois']
+    },
     {
         institute: 'Université Grenoble Alpes IUT2',
         title: 'DUT Informatique',
         courses: [' Programmation Orientée Objet', ' Développement Web', ' Assembleur et langages Machine', ' Bases de données SQL', ' Développement applications Android',
             ' Algorithmes', ' Statistiques', ' Langages et Graphes', ' Sécurité & Réseaux'],
         description: [' Validation de mon DUT en deux ans terminé par un stage de 3 mois en tant que développeur web']
-    },
-    {
-        institute: 'Université Paris 8',
-        title: 'Licence Informatique',
-        courses: [' Programmation Orientée Objet', ' Assembleur', ' Langages Machines', ' Big Data et Data Mining', ' Introduction à la sécurité', ' Interprétation et Compilation', ' Développement de logiciels OpenSource', ' Psychologie'],
-        description: ['Validation de la licence avec un stage de 2 à 6 mois']
     },
     {
         institute: 'Coursera',

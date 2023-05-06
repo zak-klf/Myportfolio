@@ -39,7 +39,7 @@ export class HomeComponent {
     });
 
     const writer2 = new Typewriter(target2, {
-      typeSpeed: 60,
+      typeSpeed: 50,
       typeColor: 'white',
       cursorColor: 'white'
     });

@@ -61,4 +61,5 @@ export interface WorkContent {
 export interface ContactContent {
     title: string;
     buttonCV: string;
+    linkCV: string;
 }
